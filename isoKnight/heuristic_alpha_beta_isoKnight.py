@@ -3,18 +3,28 @@ import math
 h = None
 
 
-def alphabeta_max_h(current_game, _heuristic, depth=3):
+def alphabeta_max_h(current_game, _heuristic, depth=3):  # warrper func fot the recursive func
     global h
     h = _heuristic
     # add code here
 
-    pass
+    # initializing variables for recursive
+    score, best_move = maximin(current_game, depth, -math.inf, math.inf)
+
+    # filter results
+    return best_move
 
 
 def alphabeta_min_h(current_game, _heuristic, depth=3):
     global h
     h = _heuristic
     # add code here
+
+    # initializing variables for recursive
+    score, best_move = maximin(current_game, depth, -math.inf, math.inf)
+
+    # filter results
+    return best_move
 
     pass
 
