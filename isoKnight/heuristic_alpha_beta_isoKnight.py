@@ -9,10 +9,7 @@ def alphabeta_max_h(current_game, _heuristic, depth=3):  # warrper func fot the 
     # add code here
 
     # initializing variables for recursive
-    score, best_move = maximin(current_game, depth, -math.inf, math.inf)
-
-    # filter results
-    return best_move
+    return maximin(current_game, depth, -math.inf, math.inf)
 
 
 def alphabeta_min_h(current_game, _heuristic, depth=3):
@@ -21,12 +18,7 @@ def alphabeta_min_h(current_game, _heuristic, depth=3):
     # add code here
 
     # initializing variables for recursive
-    score, best_move = maximin(current_game, depth, -math.inf, math.inf)
-
-    # filter results
-    return best_move
-
-    pass
+    return minimax(current_game, depth, -math.inf, math.inf)
 
 
 def maximin(current_game, depth, alpha, beta):
@@ -37,15 +29,17 @@ def maximin(current_game, depth, alpha, beta):
         return h(current_game), None
     v = -math.inf
     moves = current_game.get_moves()
+    best_move = None
+
     for move in moves:
         mx, next_move = minimax(move, depth - 1, alpha, beta)
-        if v < mx:
+        if best_move is None or v < mx:
             v = mx
             best_move = move
 
         alpha = max(v, alpha)
         if beta <= alpha:
-            break  # dont choose this way
+            return v, None  # don't choose this way
 
     return v, best_move
 
@@ -55,20 +49,20 @@ def minimax(current_game, depth, alpha, beta):
     if current_game.is_terminal():
         return current_game.get_score(), None  # stop condition
     if depth == 0:
-        return h(
-            current_game), None  # reach to the maximum search depth -Time and memory limit, so we return the v=h instead
+        return h(current_game), None
+        # reach to the maximum search depth -Time and memory limit, so we return the v=h instead
     v = math.inf
     moves = current_game.get_moves()
-    best_move = None
+    best_move=None
 
     for move in moves:
         mx, next_move = maximin(move, depth - 1, alpha, beta)
-        if v > mx:
+        if best_move is None or v > mx:
             v = mx
             best_move = move
 
         beta = min(v, beta)
         if beta <= alpha:  # there is no point in continuing this path:
-            break  # don't choose this way
+            return v, None  # don't choose this way
 
     return v, best_move

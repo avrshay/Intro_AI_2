@@ -58,8 +58,8 @@ def play_with_heuristics():
                                        depth_player_1)
     player_2 = player_agent_heuristics(heuristic_alpha_beta_isoKnight.alphabeta_min_h, heuristics.base_heuristic,
                                        depth_player_2)
-    grid = np.zeros((6, 6), dtype=int)
-    init_state = game_state(grid, (0, 0), (3, 3), 1)
+    grid = np.zeros((5, 5), dtype=int)
+    init_state = game_state(grid, (0, 0), (2, 2), 1)
     play_isoKnight(player_1, player_2, init_state)
 
 
@@ -78,6 +78,6 @@ def play_with_advanced_heuristics():
 
 if __name__ == '__main__':
     #play_with_minimax()
-    play_with_alpha_beta()
-    # play_with_heuristics()
+    #play_with_alpha_beta()
+    play_with_heuristics()
     # play_with_advanced_heuristics()

@@ -1,4 +1,4 @@
-from isoKnight.game_state import game_state
+from game_state import game_state  # need to remove when submit
 
 
 def base_heuristic(curr_state):  # curr_state is a Game state
