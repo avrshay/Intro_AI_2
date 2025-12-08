@@ -44,8 +44,8 @@ def play_with_alpha_beta():
 
 
 def play_with_heuristics():
-    depth_player_1 = 6
-    depth_player_2 = 6
+    depth_player_1 = 1
+    depth_player_2 = 1
 
     # try different depths, you can change the depth numbers, board size and locations
     # depth_player_1 = 6
@@ -58,7 +58,7 @@ def play_with_heuristics():
                                        depth_player_1)
     player_2 = player_agent_heuristics(heuristic_alpha_beta_isoKnight.alphabeta_min_h, heuristics.base_heuristic,
                                        depth_player_2)
-    grid = np.zeros((5, 5), dtype=int)
+    grid = np.zeros((3, 3), dtype=int)
     init_state = game_state(grid, (0, 0), (2, 2), 1)
     play_isoKnight(player_1, player_2, init_state)
 

@@ -29,11 +29,11 @@ def maximin(current_game, depth, alpha, beta):
         return h(current_game), None
     v = -math.inf
     moves = current_game.get_moves()
-    best_move = None
+    #best_move = None
 
     for move in moves:
         mx, next_move = minimax(move, depth - 1, alpha, beta)
-        if best_move is None or v < mx:
+        if v < mx:
             v = mx
             best_move = move
 
@@ -53,11 +53,11 @@ def minimax(current_game, depth, alpha, beta):
         # reach to the maximum search depth -Time and memory limit, so we return the v=h instead
     v = math.inf
     moves = current_game.get_moves()
-    best_move=None
+    #best_move=None
 
     for move in moves:
         mx, next_move = maximin(move, depth - 1, alpha, beta)
-        if best_move is None or v > mx:
+        if v > mx:
             v = mx
             best_move = move
 
